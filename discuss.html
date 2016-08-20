@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/discussstyle.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<div class="container">
+			<form>
+				<div class="form-group">
+					<textarea class="form-control status-box" rows="2" placeholder="What's on your mind?"></textarea>
+				</div>
+			</form>
+			<div class="button-group pull-right">
+				<p class="counter">140</p>
+				<a href="#" class="btn btn-primary">Post</a>
+			</div>
+
+			<ul class="posts">
+			</ul>
+		</div>
+		<h1>在线阅读</h1>
+		<div>
+			<a href="./add_coment.html">写回复</a>
+		</div>
+		<?php
+            if (!empty($d['coment'])) {
+                echo '<ul>';
+                foreach ($d['coment'] as $k=>$v) {
+                    $id = $k + 1;
+                    echo '<li><a href="./get_coment.php?id=' . $id . '">' . $v['title'] . '</a>';
+                    echo '<p>' . mb_substr($v['content'], 0, 100, 'UTF-8') . '……</p></li>';
+                }
+                echo '</ul>';
+            }
+        ?>
+
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+			<script src="js/discussapp.js"></script>
+
+	</body>
+
+</html>
