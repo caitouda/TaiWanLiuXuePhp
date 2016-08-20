@@ -3,13 +3,13 @@
 
 	<?php
 	$input = $_GET;
-	$id = $input['id'];
-	$file = './articles.json';
+	$ID = $input['ID'];
+	$file = './article.json';
 	if (file_exists($file)) {
 		$tmp = file_get_contents($file);
 		if (!empty($tmp)) {
-			$articles = json_decode($tmp, true);
-			$article = $articles[$id - 1];
+			$article = json_decode($tmp, true);
+			$article = $article[$ID - 1];
 		}
 	}
 	?>
@@ -21,9 +21,9 @@
 	</head>
 
 	<body>
-		<h1><?=$coment['title'] ?></h1>
-        <div>作者：<?=$coment['author'] ?></div>
-        <div><?=nl2br($coment['content']) ?>
+		<h1><?=$article['Title'] ?></h1>
+        <div>作者：<?=$article['Author'] ?></div>
+        <div><?=nl2br($article['Content']) ?>
         </div>
 	</body>
 

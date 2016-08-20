@@ -1,13 +1,15 @@
 <?php
-$coment = array();
-$file = './coment.json';
-if (file_exists($file)) {
-	$tmp = file_get_contents($file);
-	if (!empty($tmp)) {
-		$coment = json_decode($tmp, true);
-	}
-}
+$dsn = 'mysql:host=localhost;port=3306;dbname=taiwanliuxue;charset=utf8';
+$user = 'root';
+$password = '';
+$db = new PDO($dsn, $user, $password);
+
+$sql = 'SELECT `ID`, `Author`, `Title`, `Content` FROM `article` LIMIT 10';
+
+$stmt = $db -> query($sql);
+$stmt -> setFetchMode(PDO::FETCH_ASSOC);
+$article = $stmt -> fetchAll();
+
 $d = array();
-//d 是 data的意思，后续会用到
-$d['coment'] = $coment;
+$d['article'] = $article;
 require_once __DIR__ . '/discuss.html';

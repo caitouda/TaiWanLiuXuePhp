@@ -25,15 +25,15 @@
 		</div>
 		<h1>在线阅读</h1>
 		<div>
-			<a href="./add_coment.html">写回复</a>
+			<a href="./add_article.html">写文章</a>
 		</div>
 		<?php
-            if (!empty($d['coment'])) {
+            if (!empty($d['article'])) {
                 echo '<ul>';
-                foreach ($d['coment'] as $k=>$v) {
-                    $id = $k + 1;
-                    echo '<li><a href="./get_coment.php?id=' . $id . '">' . $v['title'] . '</a>';
-                    echo '<p>' . mb_substr($v['content'], 0, 100, 'UTF-8') . '……</p></li>';
+                foreach ($d['article'] as $k=>$v) {
+                    $ID = $k + 1;
+                    echo '<li><a href="./get_article.php?ID=' . $ID . '">' . $v['Title'] . '</a>';
+                    echo '<p>' . mb_substr($v['Content'], 0, 100, 'UTF-8') . '……</p></li>';
                 }
                 echo '</ul>';
             }
